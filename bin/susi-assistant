@@ -33,14 +33,16 @@ import logging
 import argparse
 import colorlog
 from pystray import Menu as menu, MenuItem as item
-from PIL import Image, ImageDraw
+from PIL import Image
 
+from susi.config import SusiConfig
 from susi.ui import ConfigurationWindow
 from susi.voice import SusiLoop, startup_sound
 
 parser = argparse.ArgumentParser(prog='susi-assistant',
                                  description='SUSI.AI Assistant')
 
+cfg = SusiConfig()
 susi_voice_enabled = False
 susi_pad_enabled = False
 susi_loop = SusiLoop()
@@ -101,19 +103,8 @@ def on_exit_clicked(icon, item):
     sys.exit(0)
 
 def create_image():
-    width = height = 100
-    color1 = "red"
-    color2 = "blue"
-    # Generate an image and draw a pattern
-    image = Image.new('RGB', (width, height), color1)
-    dc = ImageDraw.Draw(image)
-    dc.rectangle(
-        (width // 2, 0, width, height // 2),
-        fill=color2)
-    dc.rectangle(
-        (0, height // 2, width // 2, height),
-        fill=color2)
-
+    logo = os.path.join(cfg.get('path.base'), 'data/img/susi-ai.png')
+    image = Image.open(logo)
     return image
 
 parser.add_argument('-v', '--verbose', action='count', default=0,

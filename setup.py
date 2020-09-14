@@ -41,7 +41,7 @@ setup(
     packages=find_packages(),
 
     package_data={
-        "susi": ["data/wav/*.wav", "data/flite/*"],
+        "susi": ["data/wav/*.wav", "data/flite/*", "data/img/*"],
         "susi.voice.hotword_engine": ["*.pmdl"],
         "susi.ui": ["glade_files/*", "glade_files/images/*"],
     },
