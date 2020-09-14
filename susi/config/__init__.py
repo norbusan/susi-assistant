@@ -47,17 +47,17 @@ class SusiConfig():
                                               'options': [ 'Snowboy', 'PocketSphinx', 'None' ] },
             'hotword.model':                { 'default': '' },
             'path.base':                    { 'default': '.' },
-            'path.flite_speech':            { 'default': 'susi_linux/extras/cmu_us_slt.flitevox' },
-            'path.sound.detection':         { 'default': 'susi_linux/extras/detection-bell.wav' },
-            'path.sound.problem':           { 'default': 'susi_linux/extras/problem.wav' },
-            'path.sound.error.recognition': { 'default': 'susi_linux/extras/recognition-error.wav' },
-            'path.sound.error.timeout':     { 'default': 'susi_linux/extras/error-tada.wav' }
+            'path.flite_speech':            { 'default': 'data/flite/cmu_us_slt.flitevox' },
+            'path.sound.detection':         { 'default': 'data/wav/detection-bell.wav' },
+            'path.sound.problem':           { 'default': 'data/wav/problem.wav' },
+            'path.sound.error.recognition': { 'default': 'data/wav/recognition-error.wav' },
+            'path.sound.error.timeout':     { 'default': 'data/wav/error-tada.wav' }
         }
         self.config = json_config.connect(self.conffile)
         for k,v in self.defaults.items():
             self.config.setdefault(k,v['default'])
 
-        self.susiai_path = os.path.realpath(os.path.join(os.path.dirname(os.path.realpath(__file__)), "../../.."))
+        self.susiai_path = os.path.realpath(os.path.join(os.path.dirname(os.path.realpath(__file__)), ".."))
 
 
     def request_hotword_choice(self, mode = 'Snowboy'):

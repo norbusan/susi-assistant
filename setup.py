@@ -19,7 +19,7 @@ setup(
     packages=find_packages(),
 
     package_data={
-        "susi.voice": ["wav/*.wav"],
+        "susi": ["data/wav/*.wav", "data/flite/*"],
         "susi.voice.hotword_engine": ["*.pmdl"],
     },
 
