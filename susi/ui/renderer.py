@@ -1,6 +1,6 @@
 from abc import ABC, abstractclassmethod
 from rx.subject import Subject
-from .. import SusiLoop
+from ..voice import SusiLoop
 
 
 class Renderer(ABC):

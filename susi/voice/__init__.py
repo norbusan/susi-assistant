@@ -1,7 +1,9 @@
 """ Main Module of the SUSI Linux App
 """
+import os
 from ..config import SusiConfig
 from .susi_loop import SusiLoop
+from .player import player
 
 cfg = SusiConfig()
 
