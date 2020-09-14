@@ -46,6 +46,10 @@ setup(
         "susi.ui": ["glade_files/*", "glade_files/images/*"],
     },
 
+    data_files = [
+        ('share/applications', ['desktop/susi-assistant.desktop']),
+    ],
+
     scripts=['bin/susi-config', 'bin/susi-voice', 'bin/susi-assistant'],
 
     keywords='voice_assistant personal_assistant',
