@@ -8,7 +8,7 @@ import random
 import pafy
 import vlc
 
-from hwmixer import mixer
+from susi.hwmixer import mixer
 import urllib.parse
 import requests
 import xml

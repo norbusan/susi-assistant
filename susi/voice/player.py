@@ -2,7 +2,7 @@
 
 import logging
 import requests
-from vlcplayer import vlcplayer
+from susi.vlcplayer import vlcplayer
 
 logger = logging.getLogger(__name__)
 default_mode = 'server'

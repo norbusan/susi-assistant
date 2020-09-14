@@ -15,13 +15,13 @@ import json_config
 import speech_recognition
 from speech_recognition import Recognizer, Microphone
 # from requests.exceptions import ConnectionError
+from susi.config import SusiConfig
 
 import susi_python as susi
 from .hardware_components.lights import lights
 from .internet_test import internet_on
 from .action_scheduler import ActionScheduler
 from .player import player
-from susi_config import SusiConfig
 from .speech import TTS
 
 logger = logging.getLogger(__name__)
@@ -64,6 +64,8 @@ class SusiLoop():
         self.event_queue = queue.Queue()
         self.idle = True
         self.supported_languages = None
+        self.hotword_thread = None
+        self.queue_loop_thread = None
 
         try:
             res = requests.get('http://ip-api.com/json').json()
@@ -193,17 +195,20 @@ class SusiLoop():
     def start(self, background = False):
         """ start processing of audio events """
         if self.hotword_detector is not None:
-            hotword_thread = Thread(target=self.hotword_listener, name="HotwordDetectorThread")
-            hotword_thread.daemon = True
-            hotword_thread.start()
+            self.hotword_thread = Thread(target=self.hotword_listener, name="HotwordDetectorThread")
+            self.hotword_thread.daemon = True
+            self.hotword_thread.start()
 
         if background:
-            queue_loop_thread = Thread(target=self.queue_loop, name="QueueLoopThread")
-            queue_loop_thread.daemon = True
-            queue_loop_thread.start()
+            self.queue_loop_thread = Thread(target=self.queue_loop, name="QueueLoopThread")
+            self.queue_loop_thread.daemon = True
+            self.queue_loop_thread.start()
         else:
             self.queue_loop()
 
+    def stop_hotword(self):
+        if self.hotword_thread:
+            self.hotword_thread.stop()
     
     def queue_loop(self):
         while True:
@@ -413,6 +418,11 @@ class SusiLoop():
 
             self.notify_renderer('speaking', payload={'susi_reply': reply})
 
+            #if 'meta_action' in reply.keys():
+            #    if reply['meta_action'] == "pause-voice":
+
+
+                
             if 'planned_actions' in reply.keys():
                 logger.debug("planning action: ")
                 for plan in reply['planned_actions']:
