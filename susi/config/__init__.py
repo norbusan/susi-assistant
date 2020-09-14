@@ -38,6 +38,7 @@ class SusiConfig():
             'watson.tts.user':              { 'default': '' },
             'watson.tts.pass':              { 'default': '' },
             'watson.tts.voice':             { 'default': '' },
+            'deepspeech.datadir':           { 'default': 'data/deepspeech' },
             'bing.api':                     { 'default': '' },
             'susi.user':                    { 'default': '' },
             'susi.pass':                    { 'default': '' },

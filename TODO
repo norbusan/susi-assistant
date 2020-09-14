@@ -1,3 +1,8 @@
+- merged package
+  . how to install susi/data/flite/cmu_us_slt.flitevox? Can we include it?
+  . how to install the deepspeech model data?
+
+
 - page setup
   We have three different pages to server
   1) setup - wifi/hotword/wakebutton setup, does reboot the server

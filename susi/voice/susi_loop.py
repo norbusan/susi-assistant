@@ -361,12 +361,14 @@ class SusiLoop():
             return recognizer.recognize_bing(audio_data=audio, key=api_key, language=lang)
 
         elif stt == 'deepspeech-local':
-            return recognizer.recognize_deepspeech(audio, language=lang)
+            ds_data_dir = os.path.abspath(os.path.join(self.susi_config.get('deepspeech.datadir'), lang))
+            return recognizer.recognize_deepspeech(audio, language=lang, model_base_dir=ds_data_dir)
 
         else:
             logger.error(f"Unknown STT setting: {stt}")
             logger.error("Using DeepSpeech!")
-            return recognizer.recognize_deepspeech(audio, language=lang)
+            ds_data_dir = os.path.abspath(os.path.join(self.susi_config.get('deepspeech.datadir'), lang))
+            return recognizer.recognize_deepspeech(audio, language=lang, model_base_dir=ds_data_dir)
 
 
 
