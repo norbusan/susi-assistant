@@ -1,11 +1,11 @@
 [Unit]
-Description=SUSI Linux
+Description=SUSI Voice Recognition Service
 Wants=network-online.target
 After=network-online.target ss-susi-server.service
 
 [Service]
-Type=idle
-ExecStart=@SUSIDIR@/bin/susi-linux start
+Type=simple
+ExecStart=susi-voice -v --short-log
 Restart=on-failure
 
 [Install]

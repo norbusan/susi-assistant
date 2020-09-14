@@ -33,16 +33,15 @@ Usage:
          Sets a set of keys to values
   susi-config login
          Tries to log into the SUSI.AI Server
-  susi-config (un)install links DIR
-         Install or uninstall links to user programs into DIR
-  susi-config (un)install shell
-         Add/Remove PATH adjustment code to the shell
   susi-config (un)install desktop user|system|raspi
          Install or uninstall desktop files into user or system directories
          (or for the SUSI Smart Speaker when `raspi' is given)
   susi-config (un)install systemd user|system|raspi
          Install or uninstall systemd service files into user or system directories
          (or for the SUSI Smart Speaker when `raspi' is given)
+  susi-config (un)install flite-data
+  susi-config (un)install deepspeech-data
+         Install or uninstall flite TTS and deepspeech STT required data.
   susi-config uninstall [user|system]
          Uninstall the complete SUSI.AI system
          This includes uninstalling systemd and desktop integration,
@@ -101,8 +100,6 @@ def install_uninstall_shell_fragment(mode, fn, linea):
 def install_uninstall(args):
     if args[1] == 'install':
         if len(args) == 2:
-            raise ValueError("incorrect invocation of install action", args[2:])
-        if args[2] == "shell" and len(args) > 3:
             raise ValueError("incorrect invocation of install action", args[2:])
         if (args[2] == "links" or args[2] == "desktop" or args[2] == "systemd") and len(args) != 4:
             raise ValueError("incorrect invocation of install action", args[2:])

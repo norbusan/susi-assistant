@@ -6,7 +6,7 @@ After=network-online.target
 [Service]
 Type=idle
 WorkingDirectory=/home/pi/SUSI.AI
-ExecStart=/home/pi/SUSI.AI/bin/susi-config login
+ExecStart=susi-config login
 
 [Install]
 WantedBy=multi-user.target

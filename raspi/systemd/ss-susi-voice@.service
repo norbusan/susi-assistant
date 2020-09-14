@@ -4,9 +4,9 @@ Wants=network-online.target
 After=network-online.target ss-susi-server.service
 
 [Service]
-Type=idle
+Type=simple
 User=%i
-ExecStart=@SUSIDIR@/bin/susi-linux start
+ExecStart=susi-voice -v --short-log
 Restart=on-failure
 
 [Install]
