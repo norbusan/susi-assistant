@@ -194,11 +194,20 @@ class SusiLoop():
 
     def start(self, background = False):
         """ start processing of audio events """
-        if self.hotword_detector is not None:
-            self.hotword_thread = Thread(target=self.hotword_listener, name="HotwordDetectorThread")
-            self.hotword_thread.daemon = True
-            self.hotword_thread.start()
+        self.start_hotword()
+        self.start_queue()
 
+    def is_queue_running(self):
+        return (self.queue_loop_thread and self.queue_loop_thread.is_alive())
+
+    def is_hotword_running(self):
+        return (self.hotword_thread and self.hotword_thread.is_alive())
+
+    def stop(self):
+        self.stop_hotword()
+        self.stop_queue()
+
+    def start_queue(self, background = False):
         if background:
             self.queue_loop_thread = Thread(target=self.queue_loop, name="QueueLoopThread")
             self.queue_loop_thread.daemon = True
@@ -206,17 +215,21 @@ class SusiLoop():
         else:
             self.queue_loop()
 
-    def is_running(self):
-        return (self.queue_loop_thread and self.queue_loop_thread.is_alive())
+    def stop_queue(self):
+        # cannot easily be implemented because python is stupid and doesn't allow
+        # stopping thread ...
+        pass
 
-    def stop(self):
-        self.stop_hotword()
-        if self.queue_loop_thread:
-            self.queue_loop_thread.stop()
+    def start_hotword(self):
+        if self.hotword_detector is not None:
+            self.hotword_thread = Thread(target=self.hotword_listener, name="HotwordDetectorThread")
+            self.hotword_thread.daemon = True
+            self.hotword_thread.start()
 
     def stop_hotword(self):
         if self.hotword_thread:
-            self.hotword_thread.stop()
+            self.hotword_detector.stop()
+            self.hotword_thread.join()
     
     def queue_loop(self):
         while True:
