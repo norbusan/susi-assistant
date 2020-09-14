@@ -42,6 +42,7 @@ setup(
     package_data={
         "susi": ["data/wav/*.wav", "data/flite/*"],
         "susi.voice.hotword_engine": ["*.pmdl"],
+        "susi.ui": ["glade_files/*", "glade_files/images/*"],
     },
 
     scripts=['bin/susi-config', 'bin/susi-voice', 'bin/susi-assistant'],
