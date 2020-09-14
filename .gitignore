@@ -4,9 +4,11 @@
 .response
 extras/cmu_us_slt.flitevox
 **/__pycache__/
-/susi_python/
-main/hotword_engine/snowboy/_snowboydetect.so
-main/hotword_engine/snowboy/snowboydetect.py
+/susi_python
+/hwmixer
+/vlcplayer
+susi_linux/hotword_engine/snowboy/_snowboydetect.so
+susi_linux/hotword_engine/snowboy/snowboydetect.py
 /extras/output.wav
 /snowboy/
 seeed-voicecard/
