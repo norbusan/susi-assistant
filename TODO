@@ -1,6 +1,7 @@
 - merged package
-  . how to install susi/data/flite/cmu_us_slt.flitevox? Can we include it?
-  . how to install the deepspeech model data?
+  susi-config install flite / deepspeech code!!!
+- appicon
+  does not properly stop threads and never terminates!
 
 
 - page setup
@@ -23,9 +24,6 @@
 
 - make susi-server systemd socket activated so that
   starting susi_linux starts susi-server automatically
-
-- ApplicationIcon for susi-linux
-  example code maybe https://github.com/bluppfisk/coinprice-indicator/blob/master/coin/indicator.py
 
 - current master branch is broken, susi server answers rubbish!
 
