@@ -372,7 +372,7 @@ class SusiLoop():
             ds_data_dir = os.path.abspath(
                               os.path.join(
                                   self.susi_config.get('path.base'),
-                                  self.susi_config.get('deepspeech.datadir'),
+                                  self.susi_config.get('path.deepspeech'),
                                   lang))
             return recognizer.recognize_deepspeech(audio, language=lang, model_base_dir=ds_data_dir)
 
@@ -382,7 +382,7 @@ class SusiLoop():
             ds_data_dir = os.path.abspath(
                               os.path.join(
                                   self.susi_config.get('path.base'),
-                                  self.susi_config.get('deepspeech.datadir'),
+                                  self.susi_config.get('path.deepspeech'),
                                   lang))
             return recognizer.recognize_deepspeech(audio, language=lang, model_base_dir=ds_data_dir)
 
