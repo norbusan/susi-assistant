@@ -23,7 +23,7 @@ setup(
         "susi.voice.hotword_engine": ["*.pmdl"],
     },
 
-    scripts=['bin/susi-config', 'bin/susi-voice'],
+    scripts=['bin/susi-config', 'bin/susi-voice', 'bin/susi-assistant'],
 
     keywords='voice_assistant personal_assistant',
 

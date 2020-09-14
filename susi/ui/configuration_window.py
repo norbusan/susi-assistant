@@ -5,7 +5,7 @@ gi.require_version('Gtk', '3.0')  # nopep8
 from pathlib import Path
 from gi.repository import Gtk
 from .login_window import LoginWindow
-from susi_config import SusiConfig
+from susi.config import SusiConfig
 
 TOP_DIR = os.path.dirname(os.path.abspath(__file__))
 susicfg = SusiConfig()

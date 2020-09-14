@@ -206,6 +206,14 @@ class SusiLoop():
         else:
             self.queue_loop()
 
+    def is_running(self):
+        return (self.queue_loop_thread and self.queue_loop_thread.is_alive())
+
+    def stop(self):
+        self.stop_hotword()
+        if self.queue_loop_thread:
+            self.queue_loop_thread.stop()
+
     def stop_hotword(self):
         if self.hotword_thread:
             self.hotword_thread.stop()
