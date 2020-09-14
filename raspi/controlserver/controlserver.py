@@ -7,7 +7,7 @@ import uuid
 import logging
 import json_config
 import requests
-import susi_config
+import susi.config
 
 from flask import Flask , render_template , request, flash, redirect, session, abort, g, url_for
 from flask import jsonify
@@ -23,7 +23,7 @@ mountPath = '/media'
 
 wifi_search_folder = os.path.join(dir_path, '../access_point')
 susiconfig = '/home/pi/SUSI.AI/bin/susi-config'
-cfg = susi_config.SusiConfig()
+cfg = susi.config.SusiConfig()
 
 def get_token():
     url = 'http://api.susi.ai/aaa/login.json'

@@ -11,7 +11,7 @@ import logging
 import requests
 import geocoder
 
-from susi_config import SusiConfig
+from susi.config import SusiConfig
 
 current_folder = os.path.dirname(os.path.abspath(__file__))
 

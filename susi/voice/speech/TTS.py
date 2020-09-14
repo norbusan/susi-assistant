@@ -9,7 +9,7 @@ import tempfile
 from google_speech import Speech
 from watson_developer_cloud import TextToSpeechV1
 from ..player import player
-from susi_config import SusiConfig
+from susi.config import SusiConfig
 
 logger = logging.getLogger(__name__)
 susicfg = SusiConfig()
