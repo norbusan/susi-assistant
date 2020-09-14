@@ -48,6 +48,7 @@ setup(
 
     data_files = [
         ('share/applications', ['desktop/susi-assistant.desktop']),
+        ('share/icons/hicolor/scalable/apps', ['icons/susi-ai.svg']),
     ],
 
     scripts=['bin/susi-config', 'bin/susi-voice', 'bin/susi-assistant'],
