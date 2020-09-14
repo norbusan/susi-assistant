@@ -1,0 +1,55 @@
+from setuptools import setup, find_packages
+
+
+setup(
+    name='susi',
+    version='0.1',
+    url='https://susi.ai/',
+
+    description='SUSI.AI Smart Personal Assistant',
+    long_description='',
+
+    author='Norbert Preining',
+    author_email='norbert@preining.info',
+
+    license='GPLv2+',
+
+    python_requires='>=3.6',
+
+    packages=find_packages(),
+
+    package_data={
+        "susi.voice": ["wav/*.wav"],
+    },
+
+    scripts=['bin/susi-config', 'bin/susi-voice'],
+
+    keywords='voice_assistant personal_assistant',
+
+    #project_urls={
+    #    'Documentation': 'https://packaging.python.org/tutorials/distributing-packages/',
+    #    'Funding': 'https://donate.pypi.org',
+    #    'Say Thanks!': 'http://saythanks.io/to/example',
+    #    'Source': 'https://github.com/pypa/sampleproject/',
+    #    'Tracker': 'https://github.com/pypa/sampleproject/issues',
+    #},
+    
+    classifiers=[
+        # How mature is this project? Common values are
+        #   3 - Alpha
+        #   4 - Beta
+        #   5 - Production/Stable
+        'Development Status :: 3 - Alpha',
+
+        # Indicate who your project is intended for
+        # 'Intended Audience :: Developers',
+        # 'Topic :: Software Development :: Build Tools',
+
+        # Pick your license as you wish (should match "license" above)
+        'License :: OSI Approved :: GPL License',
+
+        # Specify the Python versions you support here. In particular, ensure
+        # that you indicate whether you support Python 2, Python 3 or both.
+        'Programming Language :: Python :: 3',
+    ],
+)
