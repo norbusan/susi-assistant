@@ -1,0 +1,78 @@
+dist: xenial
+language: generic
+sudo: required
+
+services:
+  - docker
+
+#
+# note, the global variables NEED to be defined like this, because travis-ci is broken
+# wrt deep merge of env settings, see
+# https://github.com/travis-ci/travis-ci/issues/8655
+# https://github.com/travis-ci/docs-travis-ci-com/issues/1485#issuecomment-351726416
+env:
+  global:
+    TRIGGER_BRANCH=""
+    TRIGGER_SOURCE=""
+  matrix:
+    - TARGET=debian VERSION=buster
+    - TARGET=ubuntu VERSION=19.10
+
+# the default script for docker tests
+# try running installation as user pi instead of root
+script:
+  - echo "TRIGGER SOURCE = $TRIGGER_SOURCE, TRIGGER BRANCH = $TRIGGER_BRANCH"
+  - .travis/run-docker
+
+jobs:
+  include:
+          #    - os: linux
+          #      env:
+          #        - RELEASEBUILDER=1
+          #        - TARGET=raspi
+          #        - VERSION=buster
+          #      before_install: sudo apt-get update ; sudo apt-get install -y --no-install-recommends qemu qemu-user-static binfmt-support parted wget dosfstools zip pixz
+          #      script:
+          #        - sudo -E bash ./.travis/create-image
+          #        - ls -lh raspbian.img
+          #      before_deploy:
+          #        - mv raspbian.img susibian-$TRAVIS_TAG.img
+          #        - travis_wait 30 pixz susibian-$TRAVIS_TAG.img susibian-$TRAVIS_TAG.img.xz
+          #        - rm -f susibian-$TRAVIS_TAG.img
+          #      deploy:
+          #        - provider: releases
+          #          api_key: $GH_TOKEN
+          #          file_glob: true
+          #          file: susibian-*.img.xz
+          #          skip_cleanup: true
+          #          on:
+          #            tags: true
+    - os: linux
+      dist: bionic
+      env:
+        - RELEASEBUILDER=1
+        - TARGET=debian
+        - VERSION=buster
+      before_install: sudo apt-get update ; sudo apt-get install -y --no-install-recommends lsb-release git ca-certificates wget python3-pip python3-setuptools
+      script:
+        - sudo pip3 install json_config
+        - export TRIGGER_SOURCE=$TRIGGER_SOURCE
+        - export TRIGGER_BRANCH=$TRIGGER_BRANCH
+        - ./install-requirements.sh --system-install --with-deepspeech
+        - ./install-susi.sh --clean --destdir $HOME/SUSI.AI
+        - cp install-requirements.sh $HOME/SUSI.AI/install-requirements.sh
+        - cp README.md $HOME/SUSI.AI/README
+        - cd $HOME
+        - tar --owner 0 --group 0 --format ustar -cf SUSI.tar SUSI.AI
+        - gzip -9 SUSI.tar
+      before_deploy:
+        - mv SUSI.tar.gz SUSIAI-$TRAVIS_TAG.tar.gz
+      deploy:
+        - provider: releases
+          api_key: $GH_TOKEN
+          file_glob: true
+          file: SUSIAI-*.tar.gz
+          skip_cleanup: true
+          on:
+            tags: true
+

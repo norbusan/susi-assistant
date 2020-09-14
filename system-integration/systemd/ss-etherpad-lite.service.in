@@ -1,0 +1,15 @@
+[Unit]
+Description=SUSI.AI Etherpad-Lite
+After=network.target
+
+[Service]
+Environment=NODE_PORT=9001
+Environment=NODE_ENV=production
+Type=simple
+User=@SUSI_ETHERPAD_USER@
+WorkingDirectory=@SUSIDIR@/susi_server/data/etherpad-lite
+ExecStart=/usr/bin/node @SUSIDIR@/susi_server/data/etherpad-lite/node_modules/ep_etherpad-lite/node/server.js
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target

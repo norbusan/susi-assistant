@@ -1,0 +1,12 @@
+[Unit]
+Description=Starting SUSI Linux
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+Type=idle
+WorkingDirectory=/home/pi/SUSI.AI
+ExecStart=/home/pi/SUSI.AI/bin/susi-config login
+
+[Install]
+WantedBy=multi-user.target
