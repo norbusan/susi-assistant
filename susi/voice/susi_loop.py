@@ -45,9 +45,9 @@ class SusiLoop():
             except RuntimeError as e:
                 logger.error(e)
 
-        thread1 = Thread(target=self.server_checker, name="ServerCheckerThread")
-        thread1.daemon = True
-        thread1.start()
+        # thread1 = Thread(target=self.server_checker, name="ServerCheckerThread")
+        # thread1.daemon = True
+        # thread1.start()
 
         recognizer = Recognizer()
         # this was False in the old state machine, but reading the API docs
