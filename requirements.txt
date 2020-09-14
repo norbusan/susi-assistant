@@ -1,6 +1,5 @@
 async_promises
 colorlog
-flask
 google_speech
 json_config
 mutagen

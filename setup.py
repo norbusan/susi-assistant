@@ -15,6 +15,27 @@ setup(
     license='Apache License',
 
     python_requires='>=3.6',
+    install_requires=[
+        'async_promises',
+        'colorlog',
+        'google_speech',
+        'json_config',
+        'mutagen',
+        'pafy',
+        'pocketsphinx==0.1.15',
+        'pyalsaaudio==0.8.4',
+        'pyaudio',
+        'python-Levenshtein',
+        'python-vlc',
+        'requests_futures',
+        'rx>=3.0.0a0',
+        'service_identity',
+        'snowboy==1.3.0',
+        'speechRecognition==3.8.1.fossasia-4',
+        'watson-developer-cloud',
+        'websocket-server',
+        'youtube-dl>=2019.6.21',
+    ],
 
     packages=find_packages(),
 
