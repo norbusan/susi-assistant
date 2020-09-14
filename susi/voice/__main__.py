@@ -4,6 +4,7 @@ import logging
 import argparse
 
 import colorlog
+from susi.config import SusiConfig
 
 from . import SusiLoop
 from .player import player
@@ -12,6 +13,7 @@ from .player import player
 parser = argparse.ArgumentParser(prog='python3 -m susi_linux',
                                  description='SUSI Linux main program')
 
+cfg = SusiConfig()
 
 def get_colorlog_handler(short=False):
     # Short log format is for use under systemd.
@@ -30,8 +32,8 @@ def get_colorlog_handler(short=False):
 
 
 def startup_sound():
-    curr_folder = os.path.dirname(os.path.abspath(__file__))
-    audio_file = os.path.join(curr_folder, 'wav/ting-ting_susi_has_started.wav')
+    base_folder = cfg.get('path.base')
+    audio_file = os.path.join(base_folder, 'data/wav/ting-ting_susi_has_started.wav')
     player.say(audio_file)
 
 
