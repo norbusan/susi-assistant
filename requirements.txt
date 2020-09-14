@@ -1,7 +1,9 @@
 async_promises
 colorlog
+flask
 google_speech
 json_config
+mutagen
 pafy
 pocketsphinx==0.1.15
 pyalsaaudio==0.8.4
