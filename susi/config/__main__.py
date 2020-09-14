@@ -84,10 +84,10 @@ def main(args):
             cfg = SusiConfig()
             if len(args) > 2:
                 raise ValueError("too many arguments for action", 'login')
-            import susi_python as susi
-            susi.sign_in(cfg.config['susi.user'],
-                         cfg.config['susi.pass'],
-                         room_name=cfg.config['roomname'])
+            import susi.server_api as susi_server
+            susi_server.sign_in(cfg.config['susi.user'],
+                                cfg.config['susi.pass'],
+                                room_name=cfg.config['roomname'])
 
         elif args[1] == 'init':
             if len(args) == 2:

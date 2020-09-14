@@ -17,7 +17,7 @@ from speech_recognition import Recognizer, Microphone
 # from requests.exceptions import ConnectionError
 from susi.config import SusiConfig
 
-import susi_python as susi
+import susi.server_api as susi
 from .hardware_components.lights import lights
 from .internet_test import internet_on
 from .action_scheduler import ActionScheduler
