@@ -9,6 +9,7 @@ pyalsaaudio==0.8.4
 pyaudio
 python-Levenshtein
 python-vlc
+pystray
 requests_futures
 rx>=3.0.0a0
 service_identity

@@ -27,6 +27,7 @@ setup(
         'pyaudio',
         'python-Levenshtein',
         'python-vlc',
+        'pystray',
         'requests_futures',
         'rx>=3.0.0a0',
         'service_identity',
