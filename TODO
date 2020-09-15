@@ -1,5 +1,3 @@
-- merged package
-  susi-config install flite / deepspeech code!!!
 - appicon
   does not properly stop threads and never terminates!
 
