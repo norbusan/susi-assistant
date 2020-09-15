@@ -18,6 +18,7 @@ setup(
     install_requires=[
         'async_promises',
         'colorlog',
+        'deepspeech==0.8.*',
         'google_speech',
         'json_config',
         'mutagen',
