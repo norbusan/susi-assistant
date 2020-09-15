@@ -3,7 +3,7 @@ from setuptools import setup, find_packages
 
 setup(
     name='susi-assistant',
-    version='0.1',
+    version='0.1.1',
     url='https://susi.ai/',
 
     description='SUSI.AI Smart Personal Assistant',
