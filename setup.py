@@ -26,6 +26,7 @@ setup(
         'pocketsphinx==0.1.15',
         'pyalsaaudio==0.8.4',
         'pyaudio',
+        'pycairo',
         'python-Levenshtein',
         'python-vlc',
         'pystray',
