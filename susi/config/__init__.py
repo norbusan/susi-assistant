@@ -49,6 +49,7 @@ class SusiConfig():
             'path.base':                    { 'default': '.' },
             'path.deepspeech':              { 'default': 'data/deepspeech' },
             'path.flite_speech':            { 'default': 'data/flite/cmu_us_slt.flitevox' },
+            'path.susi_home':               { 'default': '~/.susi.ai' },
             'path.sound.detection':         { 'default': 'data/wav/detection-bell.wav' },
             'path.sound.problem':           { 'default': 'data/wav/problem.wav' },
             'path.sound.error.recognition': { 'default': 'data/wav/recognition-error.wav' },

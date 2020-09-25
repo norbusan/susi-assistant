@@ -30,7 +30,16 @@ Usage:
          Tries to log into the SUSI.AI Server
   susi-config (un)install flite-data
   susi-config (un)install deepspeech-data
-         Install or uninstall flite TTS and deepspeech STT required data.
+         Install or uninstall flite TTS, deepspeech STT required data.
+         These will be installed into the location indicated by the
+         configuration variables `path.flite_speech` and `path.deepspeech`,
+         respectively. When these variables are relative paths, they are
+         relative to `path.base` configuration variable.
+  susi-config (un)install susi-server
+  susi-config (un)install susi-skillpad
+         Install or uninstall the SUSI Server or SUSI Skillpad.
+         These will be installed into the path indicated by the configuration
+         variable `path.susi_home`, which by default is $HOME/.susi.ai/.
 
 Notes:
   - if path.base key is a literal . ("."), susi-config get path.base
@@ -67,7 +76,7 @@ def download_file_with_progress(url, target):
 def install_uninstall(args):
     if len(args) < 3:
         raise ValueError(f"incorrect invocation of {args[1]} action", args[2:])
-    if args[2] == 'flite-data':
+    if args[2] == 'flite-data' or args[2] == 'susi-server' or args[2] == 'susi-skillpad':
         if len(args) > 3:
             raise ValueError(f"incorrect invocation of {args[1]} action", args[2:])
     elif args[2] == 'deepspeech-data':
@@ -82,6 +91,7 @@ def install_uninstall(args):
     basepath = cfg.get('path.base')
     flitep = cfg.get('path.flite_speech')
     dsp = cfg.get('path.deepspeech')
+    susihome = cfg.get('path.susi_home')
 
     if not os.path.isabs(flitep):
         flitep = os.path.abspath(os.path.join(basepath, flitep))
@@ -110,6 +120,10 @@ def install_uninstall(args):
                 else:
                     print(f"Already available: {dest}")
             print(f"Successfully install DeepSpeech model files in {dsp}")
+        elif args[2] == 'susi-server':
+            println("TODO!!!")
+        elif args[2] == 'susi-skillpad':
+            println("TODO!!!")
         else: # already checked above, though ...
             raise ValueError(f"incorrect invocation of {args[1]} action", args[2:])
 
@@ -132,6 +146,10 @@ def install_uninstall(args):
                     print(f"Cannot remove DeepSpeech data dir {dsp}\nError: {e.strerror}")
             else:
                 print(f"Either not present or not a directory: {dsp}, nothing to remove!")
+        elif args[2] == 'susi-server':
+            println("TODO!!!")
+        elif args[2] == 'susi-skillpad':
+            println("TODO!!!")
         else: # already checked above, though ...
             raise ValueError(f"incorrect invocation of {args[1]} action", args[2:])
 
